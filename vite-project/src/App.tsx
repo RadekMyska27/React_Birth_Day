@@ -1,8 +1,18 @@
 import "./App.css";
 import { Table, TableBody, TableCell, TableRow } from "flowbite-react";
 import { Data } from "./Data/birthData.ts";
+import { useFetchDayQuery } from "./Services/api.ts";
+import { useEffect } from "react";
 
 function App() {
+  const { data = [] } = useFetchDayQuery();
+
+  useEffect(() => {
+    if (data) {
+      console.log(data);
+    }
+  }, [data]);
+
   return (
     <div className="overflow-x-auto">
       <Table>
